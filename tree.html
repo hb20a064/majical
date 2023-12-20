@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>magicaltree</title>
+    <title>majicaltree</title>
     <meta name="viewport" content="width=device-width, viewport-fit=cover, shrink-to-fit=no" />
     <style>
         * {
@@ -1257,6 +1257,17 @@
 
         // }
 
+        const listener = new THREE.AudioListener();
+        camera.add(listener);
+        const AudioLoader = new THREE.AudioLoader();
+        const SESound = new THREE.Audio(listener);
+        AudioLoader.load('./SE6.mp3', function (buffer) {
+            SESound.setBuffer(buffer);
+            SESound.setLoop(false);
+            SESound.setVolume(0.5);
+
+        });
+
         window.addEventListener("mousedown", function () {
             var newcolorary = [0xffffff, 0xfffaf0, 0xffefd5, 0xffe4b5, 0xffe4e1, 0xfdf5e6, 0xfffff0, 0xf0fff0, 0xf0ffff, 0xb0c4de, 0x4682b4, 0x00bfff, 0x87ceeb, 0xafeeee, 0x40e0d0, 0x00ced1, 0x008b8b, 0x006400, 0x228b22, 0x3cb371, 0x8fbc8f, 0x98fb98, 0x9acd32, 0x6b8e23, 0xeee8aa, 0xfff8dc, 0xfffacd, 0xd2b48c, 0xffd700, 0xffa500, 0xff8c00, 0xcd853f, 0xa0522d, 0xcd5c5c, 0xe9967a, 0xfa8072, 0xff7f50, 0xdc143c, 0xdb7093, 0xffc0cb, 0xee82ee, 0xdda0dd, 0x9370db, 0x7b68ee];
             var newcolorcode = Math.floor(Math.random() * (newcolorary.length - 3));
@@ -1944,7 +1955,7 @@
             children171[1].material.color = new THREE.Color(newcolorary[newcolorcode + 1]);
             children171[2].material.color = new THREE.Color(newcolorary[newcolorcode + 2]);
             var newcolorcode = Math.floor(Math.random() * (newcolorary.length - 3));
-
+            SESound.play();
 
             console.log("-----");
         });
